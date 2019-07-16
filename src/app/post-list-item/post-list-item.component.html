@@ -1,0 +1,30 @@
+<div
+  class="container border mt-3"
+  [ngStyle]="{color: onColor()}"
+  [ngClass]="{
+    'list-group-item': true,
+    'list-group-item-success': loveIts > 0,
+    'list-group-item-danger': loveIts < 0
+  }">
+  <div class="row justify-content-between">
+    <h2 class='col-6 font-weight-bold'>{{title}}</h2>
+    <h4><i class="col-6">{{created_at | date: "dd/MM/yyyy, HH:mm"}}</i></h4>
+  </div>
+
+  <div>{{content}}</div>
+
+  <button 
+    class="btn btn-success my-2"
+    (click)="plusUn()"
+  >
+    Love it
+  </button>
+
+  <button
+    class="btn btn-danger my-2 ml-3"
+    (click)="moinsUn()"
+  >
+    Don't love it
+  </button>
+
+</div>
