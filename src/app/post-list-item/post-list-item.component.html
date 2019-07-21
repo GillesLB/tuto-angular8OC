@@ -1,5 +1,5 @@
 <div
-  class="container border mt-3"
+  class="container-fluid border mt-3"
   [ngStyle]="{color: onColor()}"
   [ngClass]="{
     'list-group-item': true,
@@ -8,23 +8,26 @@
   }">
   <div class="row justify-content-between">
     <h2 class='col-6 font-weight-bold'>{{title}}</h2>
-    <h4><i class="col-6">{{created_at | date: "dd/MM/yyyy, HH:mm"}}</i></h4>
+    <h4><i class="col-6">{{createdAt | date: "dd/MM/yyyy, HH:mm"}}</i></h4>
   </div>
 
   <div>{{content}}</div>
 
-  <button 
-    class="btn btn-success my-2"
-    (click)="plusUn()"
-  >
-    Love it
-  </button>
+  <div class="row">
+    <button 
+      class="btn btn-success my-2 ml-3"
+      (click)="plusUn()"
+    >
+      Love it
+    </button>
 
-  <button
-    class="btn btn-danger my-2 ml-3"
-    (click)="moinsUn()"
-  >
-    Don't love it
-  </button>
+    <button
+      class="btn btn-danger my-2 ml-3"
+      (click)="moinsUn()"
+    >
+      Don't love it
+    </button>
+
+  </div>
 
 </div>
