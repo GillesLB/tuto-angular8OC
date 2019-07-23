@@ -16,16 +16,23 @@
   <div class="row">
     <button 
       class="btn btn-success my-2 ml-3"
-      (click)="plusUn()"
+      (click)="onPlusUn()"
     >
       Love it
     </button>
 
     <button
       class="btn btn-danger my-2 ml-3"
-      (click)="moinsUn()"
+      (click)="onMoinsUn()"
     >
       Don't love it
+    </button>
+
+    <button
+      class="btn btn-warning my-2 ml-auto mr-3"
+      (click)="onDeletePost(post)"
+    >
+      Supprimer le post
     </button>
 
   </div>

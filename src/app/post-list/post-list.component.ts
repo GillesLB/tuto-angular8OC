@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { PostsArrayService } from 'src/app/services/posts-array.service';
 import { Post } from 'src/app/post';
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.css']
 })
-export class PostListComponent implements OnInit {
+export class PostListComponent implements OnInit, OnDestroy {
 
   posts;
 
@@ -28,8 +28,9 @@ export class PostListComponent implements OnInit {
     this.postsArrayService.emitPosts();
   }
 
-  onDeletePost(post: Post) {
-    this.postsArrayService.deletePost(post);
+  ngOnDestroy() {
+    this.postsSubscription.unsubscribe();
   }
+
 
 }

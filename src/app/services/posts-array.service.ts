@@ -12,11 +12,28 @@ import DataSnapshot = firebase.database.DataSnapshot;
 export class PostsArrayService {
 
   posts: Post[] = [];
+  loveIts: number;
 
   postsSubject = new Subject<Post[]>();
 
   constructor() {
     this.getPosts();
+  }
+
+  color(loveIts) {
+    if (loveIts > 0) {
+      return 'green';
+    } else if (loveIts < 0) {
+      return 'red';
+    }
+  }
+
+  moinsUn(loveIts) {
+    this.loveIts = loveIts;
+  }
+
+  plusUn(loveIts) {
+    this.loveIts = loveIts;
   }
 
   emitPosts() {

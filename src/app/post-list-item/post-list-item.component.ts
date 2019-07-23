@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 
 import { PostsArrayService } from 'src/app/services/posts-array.service';
 import { Subscription } from 'rxjs';
@@ -9,7 +9,7 @@ import { Post } from 'src/app/post';
   templateUrl: './post-list-item.component.html',
   styleUrls: ['./post-list-item.component.css']
 })
-export class PostListItemComponent implements OnInit {
+export class PostListItemComponent implements OnInit, OnDestroy {
 
   posts: Post[];
   postsSubscription: Subscription;
@@ -29,26 +29,27 @@ export class PostListItemComponent implements OnInit {
         this.posts = posts;
       }
     );
-    // this.postsArrayService.emitBooks();
   }
 
-  onColor() {
-    if (this.loveIts > 0) {
-      return 'green';
-    } else if (this.loveIts < 0) {
-      return 'red';
-    }
+  ngOnDestroy() {
+    this.postsSubscription.unsubscribe();
   }
 
-  plusUn() {
+  onColor(loveIts) {
+    this.postsArrayService.color(loveIts);
+  }
+
+  onPlusUn() {
     this.loveIts += 1;
+    this.postsArrayService.plusUn(this.loveIts);
   }
 
-  moinsUn() {
+  onMoinsUn() {
     this.loveIts -= 1;
+    this.postsArrayService.moinsUn(this.loveIts);
   }
 
-  deletePost(post: Post) {
+  onDeletePost(post: Post) {
     this.postsArrayService.deletePost(post);
   }
 
